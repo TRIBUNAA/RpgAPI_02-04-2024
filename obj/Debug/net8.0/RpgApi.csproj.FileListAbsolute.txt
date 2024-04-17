@@ -371,3 +371,9 @@ D:\2DSLeoEVIni\DS\RpgAPI\LV\obj\Debug\net8.0\refint\RpgApi.dll
 D:\2DSLeoEVIni\DS\RpgAPI\LV\obj\Debug\net8.0\RpgApi.pdb
 D:\2DSLeoEVIni\DS\RpgAPI\LV\obj\Debug\net8.0\RpgApi.genruntimeconfig.cache
 D:\2DSLeoEVIni\DS\RpgAPI\LV\obj\Debug\net8.0\ref\RpgApi.dll
+D:\2DSLeoEVIni\DS\RpgAPI\LV\obj\Debug\net8.0\RpgApi.sourcelink.json
+D:\2DSLeoEVIni\DS\RpgAPI\LV\bin\Debug\net8.0\publish\web.config
+D:\2DSLeoEVIni\DS\RpgAPI\LV\bin\Debug\net8.0\publish\appsettings.Development.json
+D:\2DSLeoEVIni\DS\RpgAPI\LV\bin\Debug\net8.0\publish\appsettings.json
+D:\2DSLeoEVIni\DS\RpgAPI\LV\bin\Debug\net8.0\publish\RpgApi.deps.json
+D:\2DSLeoEVIni\DS\RpgAPI\LV\bin\Debug\net8.0\publish\RpgApi.runtimeconfig.json

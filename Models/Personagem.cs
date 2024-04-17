@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using LV.Models;
+using LV.Models.Enuns;
 using RpgApi.Models.Enuns;
 
 namespace RpgApi.Models
@@ -16,7 +19,21 @@ namespace RpgApi.Models
         public int Defesa { get; set; }
         public int Inteligencia { get; set; } 
         public ClasseEnum Classe { get; set; }
-        
+        public byte[]? FotoPersonagem { get; set; } 
+        public int? UsuarioId { get; set; }
+        [JsonIgnore]
+        public Usuario? Usuario { get; set; } 
 
+         [JsonIgnore]
+         public Armas? Armas { get; set; } 
+         public int Disputas { get; set; } 
+         public int Vitorias { get; set; } 
+         public int Derrotas { get; set; } 
+         public List<PersonagemHabilidade> PersonagemHabilidades { get; set; } = [];
+
+        
     }
+
+
+
 }

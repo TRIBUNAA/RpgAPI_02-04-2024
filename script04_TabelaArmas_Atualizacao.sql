@@ -1,0 +1,120 @@
+﻿BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [TB_PERSONAGENS] ADD [Derrotas] int NOT NULL DEFAULT 0;
+GO
+
+ALTER TABLE [TB_PERSONAGENS] ADD [Disputas] int NOT NULL DEFAULT 0;
+GO
+
+ALTER TABLE [TB_PERSONAGENS] ADD [Vitorias] int NOT NULL DEFAULT 0;
+GO
+
+ALTER TABLE [TB_ARMAS] ADD [PersonagemId] int NOT NULL DEFAULT 0;
+GO
+
+UPDATE [TB_ARMAS] SET [Nome] = 'Espada', [PersonagemId] = 1
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_ARMAS] SET [PersonagemId] = 2
+WHERE [Id] = 2;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_ARMAS] SET [PersonagemId] = 3
+WHERE [Id] = 3;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_ARMAS] SET [Nome] = 'Cajado', [PersonagemId] = 4
+WHERE [Id] = 4;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_ARMAS] SET [Nome] = 'Arco e flecha', [PersonagemId] = 5
+WHERE [Id] = 5;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_ARMAS] SET [PersonagemId] = 6
+WHERE [Id] = 6;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_ARMAS] SET [Nome] = 'Ak-47', [PersonagemId] = 7
+WHERE [Id] = 7;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 1;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 3;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 4;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 5;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 6;
+SELECT @@ROWCOUNT;
+
+GO
+
+UPDATE [TB_PERSONAGENS] SET [Derrotas] = 0, [Disputas] = 0, [Vitorias] = 0
+WHERE [Id] = 7;
+SELECT @@ROWCOUNT;
+
+GO
+
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Classe', N'Defesa', N'Derrotas', N'Disputas', N'Forca', N'FotoPersonagem', N'Inteligencia', N'Nome', N'PontosVida', N'UsuarioId', N'Vitorias') AND [object_id] = OBJECT_ID(N'[TB_PERSONAGENS]'))
+    SET IDENTITY_INSERT [TB_PERSONAGENS] ON;
+INSERT INTO [TB_PERSONAGENS] ([Id], [Classe], [Defesa], [Derrotas], [Disputas], [Forca], [FotoPersonagem], [Inteligencia], [Nome], [PontosVida], [UsuarioId], [Vitorias])
+VALUES (2, 1, 25, 0, 0, 15, NULL, 30, 'Sam', 100, 1, 0);
+IF EXISTS (SELECT * FROM [sys].[identity_columns] WHERE [name] IN (N'Id', N'Classe', N'Defesa', N'Derrotas', N'Disputas', N'Forca', N'FotoPersonagem', N'Inteligencia', N'Nome', N'PontosVida', N'UsuarioId', N'Vitorias') AND [object_id] = OBJECT_ID(N'[TB_PERSONAGENS]'))
+    SET IDENTITY_INSERT [TB_PERSONAGENS] OFF;
+GO
+
+UPDATE [TB_USUARIOS] SET [PasswordHash] = 0x2A2A78BBC10F8AF9D58847F2AF58D105FBBF7D8B39A1AC8048D182B5B76674F2BF3EE41D1B13BBDD651016CE3F2FDC6DD94CCE4C15A75442AD78FC424FB16D05, [PasswordSalt] = 0x2D5B1C7147BEEF4A2ED29FDBD4F78B2169C30D7277119B74A803524D9ACD1410B46EF22F570FF7EFD19F5548B15DC7716D92DF079ED3EAA147F6CC24129264816AAC36B84808551D93FC2F8CDDF130EE72EC60B8931B199DC78DFA66B395136A23729A6F39EE64FE2CF8DD31D636A943C81B07630BE00D47D983486C6E274422
+WHERE [id] = 1;
+SELECT @@ROWCOUNT;
+
+GO
+
+CREATE UNIQUE INDEX [IX_TB_ARMAS_PersonagemId] ON [TB_ARMAS] ([PersonagemId]);
+GO
+
+ALTER TABLE [TB_ARMAS] ADD CONSTRAINT [FK_TB_ARMAS_TB_PERSONAGENS_PersonagemId] FOREIGN KEY ([PersonagemId]) REFERENCES [TB_PERSONAGENS] ([Id]) ON DELETE CASCADE;
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20240417010447_MigracaoUmParaUm', N'8.0.3');
+GO
+
+COMMIT;
+GO
+
